@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: face-recognition-service
+    env: docker
+    plan: free
+    repo: https://github.com/YOUR_USERNAME/face_poc  # Update this with your GitHub repo URL
+    branch: main
+    dockerfilePath: ./Dockerfile
+    port: 8000
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
