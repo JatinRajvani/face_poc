@@ -6,10 +6,14 @@ WORKDIR /app
 
 # Install system dependencies required for OpenCV and face recognition
 RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    g++ \
     libsm6 \
     libxext6 \
     libxrender-dev \
     libgomp1 \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
