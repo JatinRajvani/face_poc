@@ -25,6 +25,9 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Pre-download InsightFace model during build to avoid runtime memory issues
+RUN python -c "from insightface.app import FaceAnalysis; FaceAnalysis(name='buffalo_l', providers=['CPUProvider']).prepare(ctx_id=-1, det_thresh=0.5, det_size=(640, 480))" || true
+
 # Copy application code
 COPY . .
 
